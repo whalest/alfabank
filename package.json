@@ -1,0 +1,33 @@
+{
+  "name": "alfabankby",
+  "version": "1.0.0",
+  "description": "alfa-biz.by pay node.js library (alfabank belarus)",
+  "main": "index.js",
+  "scripts": {
+    "start": "esno ./play/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whalest/alfabankby.git"
+  },
+  "keywords": [
+    "alfabank",
+    "alfa-biz",
+    "belarus"
+  ],
+  "author": "reslear",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whalest/alfabankby/issues"
+  },
+  "homepage": "https://github.com/whalest/alfabankby#readme",
+  "dependencies": {
+    "@types/qs": "^6.9.5",
+    "axios": "^0.21.1",
+    "axios-nice-log": "^0.1.7",
+    "qs": "^6.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.31"
+  }
+}
