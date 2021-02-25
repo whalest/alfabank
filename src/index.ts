@@ -1,23 +1,17 @@
-import {
-  TData,
-  IAuthFields,
-  IRegisterOrderResponse,
-  IRegisterOrder,
-  TResponses,
-} from './types'
+import { TData, IAuth, IRegister, TResponses, IgetOrderStatus } from './types'
 import axios, { AxiosInstance } from 'axios'
 import qs from 'qs'
 
 export class AlfaBankBy {
   axios: AxiosInstance
 
-  #auth: IAuthFields = {
+  #auth: IAuth = {
     token: '',
     userName: '',
     password: '',
   }
 
-  constructor({ token, userName, password }: IAuthFields = {}) {
+  constructor({ token, userName, password }: IAuth = {}) {
     this.#auth = Object.assign(this.#auth, { token, userName, password })
     this.axios = axios.create({})
   }
@@ -49,8 +43,11 @@ export class AlfaBankBy {
     }
   }
 
-  async register(data: IRegisterOrder) {
-    const response = await this.request('/rest/register.do', data)
-    return response
+  async register(data: IRegister) {
+    return await this.request('/rest/register.do', data)
+  }
+
+  async getOrderStatus(data: IgetOrderStatus) {
+    return await this.request('/rest/getOrderStatus.do', data)
   }
 }

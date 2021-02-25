@@ -1,3 +1,5 @@
+import { loadEnv } from 'vite'
+
 import { AlfaBankBy } from './../src'
 import { useAxiosNiceLog } from 'axios-nice-log'
 
@@ -5,7 +7,7 @@ const alfaBank = new AlfaBankBy({ token: process.env.TOKEN })
 
 useAxiosNiceLog(alfaBank.axios)
 
-const register = async () => {
+export const register = async () => {
   const data = await alfaBank.register({
     amount: 1000,
     orderNumber: '1',
@@ -19,4 +21,4 @@ const register = async () => {
   console.log(data)
 }
 
-register()
+//register()
