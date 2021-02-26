@@ -1,7 +1,7 @@
 import { IAuth, IAuthBase } from '../auth'
 
 /** Запрос состояния заказа */
-export interface IgetOrderStatus extends Required<IAuthBase> {
+export interface IgetOrderStatus {
   /** Номер заказа в платежной системе. Уникален в пределах системы */
   orderId: string
 

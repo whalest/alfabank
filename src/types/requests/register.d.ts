@@ -1,7 +1,5 @@
-import { IAuth } from '../auth'
-
 /** Запрос регистрации заказа */
-export interface IRegister extends IAuth {
+export interface IRegister {
   /** Номер (идентификатор) заказа в системе магазина, уникален для каждого магазина в пределах системы */
   orderNumber: string
 
@@ -69,6 +67,86 @@ export interface IRegister extends IAuth {
 
   /** Номер телефона покупателя в следующем формате: +375333333333. */
   phone?: string
+
+  /** Блок, содержащий Корзину товаров заказа. */
+  orderBundle?: orderBundle
+}
+
+interface orderBundle {
+  /** Дата создания заказа */
+  orderCreationDate?: string
+
+  /** Блок с атрибутами данных о покупателе. */
+  customerDetails?: {
+    email?: string
+    phone?: string
+    contact?: string
+
+    /** Блок с атрибутами адреса для доставки. */
+    deliveryInfo?: {
+      deliveryType?: string
+      country: string
+      city: string
+      postAddress: string
+    }
+  }
+
+  /** Блок с атрибутами товарных позиции Корзины.  */
+  cartItems: {
+    /** Элемент массива с атрибутами товарной позиции в Корзине */
+    items?: cartItems[]
+  }
+}
+
+interface cartItems {
+  /** Уникальный идентификатор товарной позиции внутри Корзины Заказа */
+  positionId: number
+  /** name да Наименование или описание товарной позиции в свободной форме */
+  name: string
+
+  /** Дополнительный блок с параметрами описания товарной позиции. */
+  itemDetails?: {
+    /** Параметр описывающий дополнительную информацию по товарной позиции. */
+    itemDetailsParams: {
+      /** Дополнительная информация по товарной позиции */
+      value: string
+      /** Наименование параметра описания детализации товарной позиции */
+      name: string
+    }[]
+  }
+
+  /** Элемент описывающий общее количество товарных позиций одного positionId и их меру измерения. */
+  quantity: {
+    /** Количество товарных позиций данного positionId. Для указания дробных чисел используйте десятичную точку. */
+    value: number
+
+    /** Мера измерения количества товарной позиции
+     * @example pieces
+     */
+    measure: string
+  }
+
+  /** Сумма стоимости всех товарных позиций одного positionId в минимальных единицах валюты */
+  itemAmount: number
+  itemCurrency?: number
+
+  /** Номер (идентификатор) товарной позиции в системе магазина. Параметр должен быть уникальным в рамках запроса. */
+  itemCode?: string
+
+  discount?: {
+    /** Тип скидки на товарную позицию
+     * @example percent
+     */
+    discountType: string
+    /** Значение скидки на товарную позицию */
+    discountValue: number
+  }
+  agentInterest?: {
+    /** Тип агентской комиссии за продажу товара */
+    interestType: string
+    /** Значение агентской комиссии за продажу товара */
+    interestValue: string
+  }
 }
 
 export type IRegisterResponse = {

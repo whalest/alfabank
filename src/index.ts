@@ -26,6 +26,8 @@ export class AlfaBankBy {
         })
       )
 
+      console.log(res)
+
       const resp = res.data as TResponses
 
       if ('errorCode' in resp) {
@@ -50,4 +52,13 @@ export class AlfaBankBy {
   async getOrderStatus(data: IgetOrderStatus) {
     return await this.request('/rest/getOrderStatus.do', data)
   }
+}
+
+/**
+ * Функция для конвертирование в минимальных единицах
+ * С учетом проблем плавающей точки
+ * 10.20 - 1020
+ */
+export const toAmount = (value: number) => {
+  return parseFloat((value * 100).toFixed(2))
 }
