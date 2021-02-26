@@ -1,6 +1,6 @@
 {
   "name": "alfabank",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "Pay API for alfa-biz.by (alfabank belarus)",
   "main": "index.js",
   "scripts": {
