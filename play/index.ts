@@ -1,7 +1,7 @@
-import { AlfaBankBy, toAmount } from './../src'
+import { useAlfaBank, toAmount } from './../src'
 import { useAxiosNiceLog } from 'axios-nice-log'
 
-const alfaBank = new AlfaBankBy({ token: process.env['TOKEN'] })
+const alfaBank = useAlfaBank({ token: process.env['TOKEN'] })
 
 useAxiosNiceLog(alfaBank.axios)
 
