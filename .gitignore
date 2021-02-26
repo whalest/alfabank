@@ -88,3 +88,10 @@ sw.*
 .DS_Store
 
 .env
+
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
