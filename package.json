@@ -2,13 +2,16 @@
   "name": "alfabank",
   "version": "1.0.0",
   "description": "Pay API for alfa-biz.by (alfabank belarus)",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite-node",
     "start": "esno -r dotenv/config ./play/index.ts",
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "clean": "rm -rf dist",
-    "publish": "npm run clean && npm run build && npm version prerelease --preid=alpha && npm publish --access public"
+    "version": "npm version prerelease --preid=alpha",
+    "publish": "npm run clean && npm run build && npm run version && npm publish --access public"
   },
   "repository": {
     "type": "git",
