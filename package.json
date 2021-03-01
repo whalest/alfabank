@@ -1,6 +1,6 @@
 {
   "name": "alfabank",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Pay API for alfa-biz.by (alfabank belarus)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,13 +10,15 @@
     "start": "esno -r dotenv/config ./play/index.ts",
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "clean": "rm -rf dist",
-    "publish": "npm run clean && npm run build && npm publish --access public",
     "test": "esno node_modules/jasmine/bin/jasmine --config=jasmine.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/whalest/alfabankby.git"
   },
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
