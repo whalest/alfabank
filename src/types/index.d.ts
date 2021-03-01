@@ -1,4 +1,5 @@
-export * from './auth'
-export * from './requests/register'
-export * from './requests/getOrderStatus'
-export * from './request'
+export * from './auth.d'
+export * from './requests/register.d'
+export * from './requests/getOrderStatus.d'
+export * from './request.d'
+export {}
