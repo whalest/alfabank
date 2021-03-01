@@ -12,9 +12,6 @@ export type IResponseError = {
   errorMessage?: string
 }
 
-export type TResponses =
-  | IRegisterResponse
-  | TgetOrderStatusResponse
-  | IResponseError
+export type TResponses = IRegisterResponse | TgetOrderStatusResponse
 
 export type TData = IRegister | IgetOrderStatus

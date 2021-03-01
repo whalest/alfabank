@@ -1,41 +1,44 @@
-import { useAlfaBank, toAmount } from './../src'
+import { useAlfaBank, toBynPenny } from './../src'
 import { useAxiosNiceLog } from 'axios-nice-log'
 
 const alfaBank = useAlfaBank({ token: process.env['TOKEN'] })
 
-useAxiosNiceLog(alfaBank.axios)
+useAxiosNiceLog(alfaBank.instance)
 
 export const register = async () => {
-  const order = 5
+  const order = 9
 
   const data = await alfaBank.register({
-    amount: toAmount(115) * 2,
+    amount: toBynPenny(115 * 2),
     orderNumber: `${order}`,
     returnUrl: `${process.env['URL']}`,
-    /* jsonParams: {
+
+    jsonParams: {
+      order: 'dasdsa',
+      code: '123',
       email: 'test@mail.ru',
       phone: '+375251001100',
-    }, */
+    },
 
     email: 'test@mail.ru',
     phone: '+375251001100',
-    /* 
+
     orderBundle: {
       cartItems: {
         items: [
           {
-            name: 'Салфетка супер',
+            name: 'Салфетка для монитора',
             positionId: 1,
             quantity: {
-              measure: 'pieces',
+              measure: 'штук',
               value: 2,
             },
-            itemCurrency: 3,
-            itemAmount: toAmount(115),
+            itemPrice: toBynPenny(115),
+            itemCode: '2',
           },
         ],
       },
-    }, */
+    },
   })
 
   if ('orderId' in data) {
