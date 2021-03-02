@@ -1,6 +1,6 @@
 {
   "name": "alfabank",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Pay API for alfa-biz.by (alfabank belarus)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite-node",
     "start": "esno -r dotenv/config ./play/index.ts",
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
     "clean": "rm -rf dist",
     "test": "esno node_modules/jasmine/bin/jasmine --config=jasmine.json"
   },
@@ -45,7 +45,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jasmine": "^3.6.4",
-    "tsup": "^4.5.1",
+    "tsup": "^4.6.0",
     "typescript": "^4.2.2",
     "vite": "^2.0.4",
     "vite-plugin-node": "^0.0.7"

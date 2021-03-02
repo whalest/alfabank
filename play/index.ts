@@ -6,7 +6,7 @@ const alfaBank = useAlfaBank({ token: process.env['TOKEN'] })
 useAxiosNiceLog(alfaBank.instance)
 
 export const register = async () => {
-  const order = 9
+  const order = 10
 
   const data = await alfaBank.register({
     amount: toBynPenny(115 * 2),
@@ -20,8 +20,8 @@ export const register = async () => {
       phone: '+375251001100',
     },
 
-    email: 'test@mail.ru',
-    phone: '+375251001100',
+  /*   email: 'test@mail.ru',
+    phone: '+375251001100', */
 
     orderBundle: {
       cartItems: {
