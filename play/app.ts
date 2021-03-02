@@ -4,9 +4,7 @@ import { register, status } from '.'
 const app = express()
 
 app.get('/', async (req, res) => {
-  res.send(
-    '<a href="/register">register</a>  <a href="/register">get status</a>'
-  )
+  res.send('<a href="/register">register</a>  <a href="/status">get status</a>')
 })
 
 app.get('/register', async (req, res) => {
@@ -15,8 +13,8 @@ app.get('/register', async (req, res) => {
 })
 
 app.get('/status', async (req, res) => {
-  await status()
-  res.send('ok')
+  const data = await status()
+  res.send(data)
 })
 
 app.listen()

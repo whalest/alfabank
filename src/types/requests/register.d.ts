@@ -1,5 +1,5 @@
 /** Запрос регистрации заказа */
-export interface IRegister {
+export interface Register {
   /** Номер (идентификатор) заказа в системе магазина, уникален для каждого магазина в пределах системы */
   orderNumber: string
 
@@ -161,7 +161,7 @@ interface cartItems {
   }
 }
 
-export type IRegisterResponse = {
+export type RegisterResponse = {
   /** Номер заказа в платежной системе. Уникален в пределах системы.
    * Отсутствует, если регистрация заказа на удалась по причине ошибки, детализированной в errorCode. */
   orderId?: string

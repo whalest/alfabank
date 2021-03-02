@@ -1,7 +1,7 @@
 import { IAuth, IAuthBase } from '../auth'
 
 /** Запрос состояния заказа */
-export interface IgetOrderStatus {
+export interface Status {
   /** Номер заказа в платежной системе. Уникален в пределах системы */
   orderId: string
 
@@ -9,7 +9,7 @@ export interface IgetOrderStatus {
   language?: string
 }
 
-export type TgetOrderStatusResponse = {
+export type StatusResponse = {
   /** По значению этого параметра определяется состояние заказа в платежной системе. Список возможных значений приведен в таблице ниже. Отсутствует, если заказ не был найден. */
   OrderStatus?: number
 

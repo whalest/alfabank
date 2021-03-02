@@ -1,10 +1,7 @@
-import {
-  IgetOrderStatus,
-  TgetOrderStatusResponse,
-} from './requests/getOrderStatus'
-import { IRegister, IRegisterResponse } from './requests/register'
+import { Status, StatusResponse } from './requests/getOrderStatus'
+import { Register, RegisterResponse } from './requests/register'
 
-export type IResponseError = {
+export type ErrorResponse = {
   /**Код ошибки */
   errorCode?: string
 
@@ -12,6 +9,5 @@ export type IResponseError = {
   errorMessage?: string
 }
 
-export type TResponses = IRegisterResponse | TgetOrderStatusResponse
-
-export type TData = IRegister | IgetOrderStatus
+export type Responses = RegisterResponse | StatusResponse
+export type Requests = Register | Status

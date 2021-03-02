@@ -1,12 +1,14 @@
 import {
-  TData,
+  Requests,
   IAuth,
-  IRegister,
-  TResponses,
-  IgetOrderStatus,
+  Responses,
   IResponseError,
-  IRegisterResponse,
-  TgetOrderStatusResponse,
+  Register,
+  RegisterResponse,
+  Status,
+  StatusResponse,
+  StatusExtended,
+  StatusExtendedResponse,
 } from '../types'
 
 import axios, { AxiosInstance } from 'axios'
@@ -15,9 +17,9 @@ import { encode } from './utils'
 export const useAlfaBank = ({ token, password, userName }: IAuth) => {
   let instance = axios.create()
 
-  const request = async <T extends TResponses>(
+  const request = async <T extends Responses>(
     url: string,
-    data: Partial<TData> = {}
+    data: Partial<Requests> = {}
   ) => {
     try {
       let dataEncoded = encode({
@@ -34,7 +36,7 @@ export const useAlfaBank = ({ token, password, userName }: IAuth) => {
 
       const resp = res.data as T | IResponseError
 
-      if ('errorCode' in resp) {
+      if ('errorCode' in resp && resp.errorCode !== '0') {
         return {
           errorCode: resp.errorCode,
           errorMessage: resp.errorMessage,
@@ -49,13 +51,17 @@ export const useAlfaBank = ({ token, password, userName }: IAuth) => {
     }
   }
 
-  const register = async (data: IRegister) => {
-    return await request<IRegisterResponse>('/rest/register.do', data)
+  const register = async (data: Register) => {
+    return await request<RegisterResponse>('/rest/register.do', data)
   }
 
-  const getOrderStatus = async (data: IgetOrderStatus) => {
-    return await request<TgetOrderStatusResponse>(
-      '/rest/getOrderStatus.do',
+  const getOrderStatus = async (data: Status) => {
+    return await request<StatusResponse>('/rest/getOrderStatus.do', data)
+  }
+
+  const getOrderStatusExtended = async (data: StatusExtended) => {
+    return await request<StatusExtendedResponse>(
+      '/rest/getOrderStatusExtended.do',
       data
     )
   }
@@ -64,5 +70,6 @@ export const useAlfaBank = ({ token, password, userName }: IAuth) => {
     instance,
     register,
     getOrderStatus,
+    getOrderStatusExtended,
   }
 }
