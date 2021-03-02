@@ -1,3 +1,5 @@
+import { ErrorResponse } from '../error'
+
 /** Запрос регистрации заказа */
 export interface Register {
   /** Номер (идентификатор) заказа в системе магазина, уникален для каждого магазина в пределах системы */
@@ -161,7 +163,7 @@ interface cartItems {
   }
 }
 
-export type RegisterResponse = {
+export interface RegisterResponse extends ErrorResponse {
   /** Номер заказа в платежной системе. Уникален в пределах системы.
    * Отсутствует, если регистрация заказа на удалась по причине ошибки, детализированной в errorCode. */
   orderId?: string

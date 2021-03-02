@@ -1,4 +1,5 @@
 import { IAuth, IAuthBase } from '../auth'
+import { ErrorResponse } from '../error'
 
 /** Запрос состояния заказа */
 export interface Status {
@@ -9,7 +10,7 @@ export interface Status {
   language?: string
 }
 
-export type StatusResponse = {
+export interface StatusResponse extends ErrorResponse {
   /** По значению этого параметра определяется состояние заказа в платежной системе. Список возможных значений приведен в таблице ниже. Отсутствует, если заказ не был найден. */
   OrderStatus?: number
 

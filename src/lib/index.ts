@@ -1,8 +1,5 @@
 import {
-  Requests,
   IAuth,
-  Responses,
-  ErrorResponse,
   Register,
   RegisterResponse,
   Status,
@@ -17,50 +14,40 @@ import { encode } from './utils'
 export const useAlfaBank = ({ token, password, userName }: IAuth) => {
   let instance = axios.create()
 
-  const request = async <T extends Responses>(
-    url: string,
-    data: Partial<Requests> = {}
-  ) => {
+  const request = async <T, K>(url: string, data: Partial<K> = {}) => {
     try {
       let dataEncoded = encode({
         ...data,
         ...{ token, password, userName },
       })
 
-      const res = await instance.post(
+      const resp = await instance.post<T>(
         `https://web.rbsuat.com/ab_by${url}`,
         dataEncoded
       )
 
-      console.log(res.config.data)
-
-      const resp = res.data as T | ErrorResponse
-
-      if ('errorCode' in resp && resp.errorCode !== '0') {
-        return {
-          errorCode: resp.errorCode,
-          errorMessage: resp.errorMessage,
-        }
-      }
-
-      return resp
+      return resp.data
     } catch (e) {
-      return {
-        errorCode: 'axios',
-      }
+      return null
     }
   }
 
   const register = async (data: Register) => {
-    return await request<RegisterResponse>('/rest/register.do', data)
+    return await request<RegisterResponse, typeof data>(
+      '/rest/register.do',
+      data
+    )
   }
 
   const getOrderStatus = async (data: Status) => {
-    return await request<StatusResponse>('/rest/getOrderStatus.do', data)
+    return await request<StatusResponse, typeof data>(
+      '/rest/getOrderStatus.do',
+      data
+    )
   }
 
   const getOrderStatusExtended = async (data: StatusExtended) => {
-    return await request<StatusExtendedResponse>(
+    return await request<StatusExtendedResponse, typeof data>(
       '/rest/getOrderStatusExtended.do',
       data
     )

@@ -1,4 +1,3 @@
-import { ErrorResponse } from '../request'
 import { Status, StatusResponse } from './getOrderStatus'
 
 export interface StatusExtended extends Status {
@@ -10,7 +9,7 @@ export interface StatusExtended extends Status {
   orderNumber?: string
 }
 
-export type StatusExtendedResponse = {
+export interface StatusExtendedResponse {
   /** Номер (идентификатор) заказа в системе магазина. */
   orderNumber: string
 
