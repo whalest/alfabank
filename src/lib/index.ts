@@ -2,7 +2,7 @@ import {
   Requests,
   IAuth,
   Responses,
-  IResponseError,
+  ErrorResponse,
   Register,
   RegisterResponse,
   Status,
@@ -34,7 +34,7 @@ export const useAlfaBank = ({ token, password, userName }: IAuth) => {
 
       console.log(res.config.data)
 
-      const resp = res.data as T | IResponseError
+      const resp = res.data as T | ErrorResponse
 
       if ('errorCode' in resp && resp.errorCode !== '0') {
         return {

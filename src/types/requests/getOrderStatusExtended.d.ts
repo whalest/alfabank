@@ -10,7 +10,7 @@ export interface StatusExtended extends Status {
   orderNumber?: string
 }
 
-export interface StatusExtendedResponse {
+export type StatusExtendedResponse = {
   /** Номер (идентификатор) заказа в системе магазина. */
   orderNumber: string
 
