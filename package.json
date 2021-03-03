@@ -1,6 +1,6 @@
 {
   "name": "alfabank",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "Pay API for alfa-biz.by (alfabank belarus)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -45,9 +45,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jasmine": "^3.6.4",
-    "tsup": "^4.6.0",
+    "tsup": "^4.6.1",
     "typescript": "^4.2.2",
-    "vite": "^2.0.4",
+    "vite": "^2.0.5",
     "vite-plugin-node": "^0.0.7"
   }
 }
