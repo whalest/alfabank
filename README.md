@@ -8,10 +8,12 @@
 alfa-biz.by pay node.js library (alfabank belarus)
 
 - [axios](https://github.com/axios/axios)
+- composition api like
 - written on typescript (autocomplete filed)
   - [x] `register.do`
   - [x] `register.do` with `orderBundle`
   - [x] `getOrderStatus.do`
+  - [x] `addParams.do`
 
 # Installing
 
@@ -23,15 +25,36 @@ npm i alfabank
 yarn add alfabank
 ```
 
-# Using
-
-## Import
+import
 
 ```ts
 import { useAlfaBank, toBynPenny } from 'alfabank'
 ```
 
-## Autorization
+## Usage
+
+### `toBynPenny`
+
+convert human amount to minimum unit of measure
+
+```ts
+toBynPenny(10.5)
+// Result: 1050
+```
+
+### `useAlfaBank`
+
+instance for action
+
+### Options
+
+#### `token` - (string) Token
+
+#### `userName` - (string) Login for integration
+
+#### `password` - (string) Password for integration
+
+#### `language` - (string, default: ru) language for all requests
 
 ```ts
 const alfaBank = useAlfaBank({
@@ -39,11 +62,13 @@ const alfaBank = useAlfaBank({
 
   // or
   userName: 'your name',
-  password: ' yor'
+  password: ' yor',
+
+  language: 'en'
 })
 ```
 
-for storage use `.env` variables
+Autorization example, for storage use `.env` variables
 
 ## Register order
 
