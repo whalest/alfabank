@@ -1,12 +1,17 @@
 import { useAlfaBank, toBynPenny } from './../src'
 import { useAxiosNiceLog } from 'axios-nice-log'
 
-const alfaBank = useAlfaBank({ token: process.env['TOKEN'] })
+const alfaBank = useAlfaBank({
+  //
+  //token: process.env['TOKEN']
+  userName: process.env['ALFABANK_USER'],
+  password: process.env['ALFABANK_PASSWORD'],
+})
 
 useAxiosNiceLog(alfaBank.instance)
 
 export const register = async () => {
-  const order = 12
+  const order = 14
 
   const data = await alfaBank.register({
     amount: toBynPenny(115 * 2),
@@ -16,6 +21,10 @@ export const register = async () => {
     jsonParams: {
       order: 'dasdsa',
       code: '123',
+
+      confirmed: false,
+      confirmeds: 0,
+
       /* email: 'test@mail.ru',
       phone: '+375251001100', */
     },
@@ -55,9 +64,9 @@ export const default_status = async () => {
   return data
 }
 
-export const status = async () => {
+export const status = async (orderId?: string) => {
   const data = await alfaBank.getOrderStatusExtended({
-    orderId: process.env['ORDER'],
+    orderId: orderId || process.env['ORDER'],
   })
 
   /*   if (data. !== '0') {
@@ -68,3 +77,15 @@ export const status = async () => {
   return data
 }
 //register()
+
+export const setParams = async (orderId?: string) => {
+  const data = await alfaBank.addParams({
+    orderId: orderId || process.env['ORDER'],
+    params: {
+      hello: new Date().toJSON(),
+    },
+  })
+
+  console.log(data)
+  return data
+}

@@ -10,24 +10,35 @@ import {
 
 import axios, { AxiosInstance } from 'axios'
 import { encode } from './utils'
+import { Params, ParamsResponse } from '../types/requests/addParams'
 
-export const useAlfaBank = ({ token, password, userName }: IAuth) => {
+interface Options extends IAuth {
+  language?: string
+}
+
+export const useAlfaBank = ({
+  token,
+  password,
+  userName,
+  language = 'ru',
+}: Options = {}) => {
+  let isDebug = true
   let instance = axios.create()
+  let baseUrl = 'https://web.rbsuat.com/ab_by'
 
   const request = async <T, K>(url: string, data: Partial<K> = {}) => {
     try {
       let dataEncoded = encode({
-        ...data,
+        language,
         ...{ token, password, userName },
+        ...data,
       })
 
-      const resp = await instance.post<T>(
-        `https://web.rbsuat.com/ab_by${url}`,
-        dataEncoded
-      )
+      const resp = await instance.post<T>([baseUrl, url].join(''), dataEncoded)
 
       return resp.data
     } catch (e) {
+      if (isDebug) console.log(e.response.data)
       return null
     }
   }
@@ -53,9 +64,19 @@ export const useAlfaBank = ({ token, password, userName }: IAuth) => {
     )
   }
 
+  /** Запрос добавления дополнительных параметров к заказу */
+  const addParams = async (data: Params) => {
+    const result = await request<ParamsResponse, typeof data>(
+      '/rest/addParams.do',
+      data
+    )
+    return result?.errorCode === 0 ? true : result
+  }
+
   return {
     instance,
     register,
+    addParams,
     getOrderStatus,
     getOrderStatusExtended,
   }

@@ -1,4 +1,4 @@
-import { ErrorResponse } from '../error'
+import { ErrorResponse } from '../common'
 
 /** Запрос регистрации заказа */
 export interface Register {
@@ -43,7 +43,7 @@ export interface Register {
     email?: string
     phone?: string
   } & {
-    [K: string]: string
+    [K: string]: any
   }
 
   /** Продолжительность жизни заказа в секундах.

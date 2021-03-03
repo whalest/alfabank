@@ -1,5 +1,4 @@
-import { IAuth, IAuthBase } from '../auth'
-import { ErrorResponse } from '../error'
+import { ErrorResponse } from '../common'
 
 /** Запрос состояния заказа */
 export interface Status {

@@ -1,10 +1,12 @@
 import express from 'express'
-import { register, status } from '.'
+import { register, setParams, status } from '.'
 
 const app = express()
 
 app.get('/', async (req, res) => {
-  res.send('<a href="/register">register</a>  <a href="/status">get status</a>')
+  res.send(
+    `<a href="/register">register</a> | <a href="/status">get status</a> | <a href="/params">set params</a>`
+  )
 })
 
 app.get('/register', async (req, res) => {
@@ -13,7 +15,18 @@ app.get('/register', async (req, res) => {
 })
 
 app.get('/status', async (req, res) => {
-  const data = await status()
+  const { orderId } = req.query
+
+  const data = await status(orderId ? `${orderId}` : '')
+
+  res.send(data)
+})
+
+app.get('/params', async (req, res) => {
+  const { orderId } = req.query
+
+  const data = await setParams(orderId ? `${orderId}` : '')
+
   res.send(data)
 })
 
