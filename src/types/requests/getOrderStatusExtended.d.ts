@@ -71,7 +71,7 @@ export interface StatusExtendedResponse {
   merchantOrderParams?: Attribute[]
 
   /** object converted parameters  */
-  params?: { [K: string]: any }
+  params: { [K: string]: any }
 
   cardAuthInfo: CardAuthInfo
 
