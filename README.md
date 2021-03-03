@@ -1,11 +1,10 @@
-# alfabank
+<h1 align="center">🏦 alfabank</h1>
+<p align="center">alfa-biz.by pay node.js library (alfabank belarus)</p>
 
-![alfabank](https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true)
+<img align="center" alt="alfabank" src="https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true" />
 
 [![d](https://img.shields.io/npm/dm/alfabank.svg?style=flat-square)](https://npmjs.com/package/alfabank)
 [![v](https://img.shields.io/npm/v/alfabank/latest.svg?style=flat-square)](https://npmjs.com/package/alfabank)
-
-alfa-biz.by pay node.js library (alfabank belarus)
 
 - [axios](https://github.com/axios/axios)
 - composition api like
