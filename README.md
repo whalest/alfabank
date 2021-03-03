@@ -1,5 +1,5 @@
 <h1 align="center">🏦 alfabank</h1>
-<p align="center">Pay API for alfa-biz.by (alfabank belarus)</p>
+<p align="center">Pay API node.js library for alfa-biz.by (alfabank belarus)</p>
 
 <img align="center" alt="alfabank" src="https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true" />
 
