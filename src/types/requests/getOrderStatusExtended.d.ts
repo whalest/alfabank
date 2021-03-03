@@ -70,6 +70,9 @@ export interface StatusExtendedResponse {
   /** Дополнительные параметры продавца */
   merchantOrderParams?: Attribute[]
 
+  /** object converted parameters  */
+  params?: { [K: string]: any }
+
   cardAuthInfo: CardAuthInfo
 
   secureAuthInfo?: {
@@ -103,7 +106,7 @@ interface BindingInfo {
 }
 
 // TODO:
-interface Attribute {
+export interface Attribute {
   name: string
   value: string
 }

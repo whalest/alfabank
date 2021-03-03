@@ -6,10 +6,11 @@ import {
   StatusResponse,
   StatusExtended,
   StatusExtendedResponse,
+  Attribute,
 } from '../types'
 
 import axios, { AxiosInstance } from 'axios'
-import { encode } from './utils'
+import { encode, paramsToObject } from './utils'
 import { Params, ParamsResponse } from '../types/requests/addParams'
 
 interface Options extends IAuth {
@@ -58,19 +59,25 @@ export const useAlfaBank = ({
   }
 
   const getOrderStatusExtended = async (data: StatusExtended) => {
-    return await request<StatusExtendedResponse, typeof data>(
+    const req = await request<StatusExtendedResponse, typeof data>(
       '/rest/getOrderStatusExtended.do',
       data
     )
+
+    if (req?.merchantOrderParams) {
+      req.params = paramsToObject(req.merchantOrderParams)
+    }
+
+    return req
   }
 
   /** Запрос добавления дополнительных параметров к заказу */
   const addParams = async (data: Params) => {
-    const result = await request<ParamsResponse, typeof data>(
+    const req = await request<ParamsResponse, typeof data>(
       '/rest/addParams.do',
       data
     )
-    return result?.errorCode === 0 ? true : result
+    return req?.errorCode === 0 ? true : req
   }
 
   return {

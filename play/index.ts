@@ -69,10 +69,6 @@ export const status = async (orderId?: string) => {
     orderId: orderId || process.env['ORDER'],
   })
 
-  /*   if (data. !== '0') {
-    data['']
-  }  */
-
   console.log(data)
   return data
 }
