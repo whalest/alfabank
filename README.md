@@ -15,6 +15,8 @@
   - [x] `getOrderStatusExtended.do`
   - [x] `addParams.do`
 
+based on [merchant manual - ru](https://alfa-biz.by/acquiring/docs/merchantmanual.pdf#page=92)
+
 # Installing
 
 Install alfabank package
