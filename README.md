@@ -12,6 +12,7 @@
   - [x] `register.do`
   - [x] `register.do` with `orderBundle`
   - [x] `getOrderStatus.do`
+  - [x] `getOrderStatusExtended.do`
   - [x] `addParams.do`
 
 # Installing
@@ -69,7 +70,9 @@ const alfaBank = useAlfaBank({
 
 Autorization example, for storage use `.env` variables
 
-## Register order
+### Methods
+
+#### `register` - Register order
 
 ```ts
 const result = await alfaBank.register({
@@ -97,9 +100,36 @@ const result = await alfaBank.register({
   },
 })
 
-if ('orderId' in result) {
+if (result?.orderId) {
   console.log(result.formUrl, result.orderId)
-} else if ('errorCode' in result) {
+} else if (result?.errorCode) {
   throw new Error(result.errorMessage)
 }
 ```
+
+#### `getOrderStatus` - get order status
+
+#### `getOrderStatusExtended` - get extended order status
+
+mutate response and add `params` field with value converted `merchantOrderParams` array to object like `{"key": "value"}`
+
+```ts
+{
+
+  // ...
+  merchantOrderParams: [
+    {
+      name: "browser_language_param",
+      value: "ru"
+    },
+  ],
+
+  params: {
+    browser_language_param: "ru",
+
+    // ...
+  }
+}
+```
+
+#### `addParams` - add params to order
