@@ -64,8 +64,9 @@ export const useAlfaBank = ({
       data
     )
 
-    if (req?.merchantOrderParams) {
-      req.params = paramsToObject(req.merchantOrderParams)
+    if (req) {
+      const params = req.merchantOrderParams
+      req.params = params ? paramsToObject(params) : {}
     }
 
     return req

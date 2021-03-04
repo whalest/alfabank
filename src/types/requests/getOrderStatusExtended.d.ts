@@ -1,3 +1,4 @@
+import { ErrorResponse } from '../common'
 import { Status, StatusResponse } from './getOrderStatus'
 
 export interface StatusExtended extends Status {
@@ -9,7 +10,7 @@ export interface StatusExtended extends Status {
   orderNumber?: string
 }
 
-export interface StatusExtendedResponse {
+export interface StatusExtendedResponse extends ErrorResponse {
   /** Номер (идентификатор) заказа в системе магазина. */
   orderNumber: string
 
@@ -31,20 +32,6 @@ export interface StatusExtendedResponse {
 
   /** Расшифровка кода ответа на языке, переданном в параметре Language в запросе. */
   actionCodeDescription: string
-
-  /** Код ошибки. Возможны следующие варианты.
-   *
-   * - 0 - Обработка запроса прошла без системных ошибок;
-   * - 1 - Ожидается [orderId] или [orderNumber];
-   * - 5 - Доступ запрещён;
-   * - 5 - Пользователь должен сменить свой пароль;
-   * - 6 - Заказ не найден;
-   * - 7 - Системная ошибка.
-   * */
-  errorCode?: number
-
-  /** Описание ошибки на языке, переданном в параметре Language в запросе. */
-  errorMessage?: string
 
   /** Сумма платежа в копейках (или центах) */
   amount: number
