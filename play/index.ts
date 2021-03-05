@@ -1,6 +1,8 @@
 import { useAlfaBank, toBynPenny } from './../src'
 import { useAxiosNiceLog } from 'axios-nice-log'
 
+import crypto from 'crypto'
+
 const alfaBank = useAlfaBank({
   //
   //token: process.env['TOKEN']
@@ -11,7 +13,7 @@ const alfaBank = useAlfaBank({
 useAxiosNiceLog(alfaBank.instance)
 
 export const register = async () => {
-  const order = 14
+  const order = crypto.randomBytes(8).toString('hex')
 
   const data = await alfaBank.register({
     amount: toBynPenny(115 * 2),
@@ -68,6 +70,9 @@ export const status = async (orderId?: string) => {
   const data = await alfaBank.getOrderStatusExtended({
     orderId: orderId || process.env['ORDER'],
   })
+
+  if (data.orderStatus && data.orderStatus === 2) {
+  }
 
   console.log(data)
   return data

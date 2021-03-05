@@ -12,6 +12,7 @@ import {
 import axios, { AxiosInstance } from 'axios'
 import { encode, paramsToObject } from './utils'
 import { Params, ParamsResponse } from '../types/requests/addParams'
+import { OrderStatus } from '../enums/orderStatus'
 
 interface Options extends IAuth {
   language?: string
@@ -67,6 +68,10 @@ export const useAlfaBank = ({
     if (req) {
       const params = req.merchantOrderParams
       req.params = params ? paramsToObject(params) : {}
+
+      req.paid =
+        req.orderStatus === OrderStatus.APPROVED ||
+        req.orderStatus === OrderStatus.DEPOSITED
     }
 
     return req

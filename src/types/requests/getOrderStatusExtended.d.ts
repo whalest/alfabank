@@ -1,3 +1,4 @@
+import { OrderStatus } from '../../enums/orderStatus'
 import { ErrorResponse } from '../common'
 import { Status, StatusResponse } from './getOrderStatus'
 
@@ -10,22 +11,19 @@ export interface StatusExtended extends Status {
   orderNumber?: string
 }
 
-export interface StatusExtendedResponse extends ErrorResponse {
+interface Mutated {
+  /** Оплачен ли платеж  */
+  paid: boolean
+
+  /** object converted parameters  */
+  params: { [K: string]: any }
+}
+
+export interface StatusExtendedResponse extends ErrorResponse, Mutated {
   /** Номер (идентификатор) заказа в системе магазина. */
   orderNumber: string
 
-  /** По значению этого параметра определяется состояние заказа в платёжной системе.
-   * Список возможных значений приведён в списке ниже. Отсутствует, если заказ не был найден.
-   *
-   * - 0 - Заказ зарегистрирован, но не оплачен;
-   * - 1 - Предавторизованная сумма захолдирована (для двухстадийных платежей);
-   * - 2 - Проведена полная авторизация суммы заказа;
-   * - 3 - Авторизация отменена;
-   * - 4 - По транзакции была проведена операция возврата;
-   * - 5 - Инициирована авторизация через ACS банка-эмитента;
-   * - 6 - Авторизация отклонена.
-   * */
-  orderStatus?: number
+  orderStatus?: OrderStatus
 
   /** Код ответа. */
   actionCode: number
@@ -56,9 +54,6 @@ export interface StatusExtendedResponse extends ErrorResponse {
 
   /** Дополнительные параметры продавца */
   merchantOrderParams?: Attribute[]
-
-  /** object converted parameters  */
-  params: { [K: string]: any }
 
   cardAuthInfo: CardAuthInfo
 

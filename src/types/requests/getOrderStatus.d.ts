@@ -1,3 +1,4 @@
+import { OrderStatus } from '../../enums/orderStatus'
 import { ErrorResponse } from '../common'
 
 /** Запрос состояния заказа */
@@ -11,7 +12,7 @@ export interface Status {
 
 export interface StatusResponse extends ErrorResponse {
   /** По значению этого параметра определяется состояние заказа в платежной системе. Список возможных значений приведен в таблице ниже. Отсутствует, если заказ не был найден. */
-  OrderStatus?: number
+  OrderStatus?: OrderStatus
 
   /** Номер (идентификатор) заказа в системе магазина */
   OrderNumber: string

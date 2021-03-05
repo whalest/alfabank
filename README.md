@@ -113,7 +113,11 @@ if (result?.orderId) {
 
 #### `getOrderStatusExtended` - get extended order status
 
-mutate response and add `params` field with value converted `merchantOrderParams` array to object like `{"key": "value"}`
+mutate response:
+
+`params` - field with value converted `merchantOrderParams` array to object like `{"key": "value"}`
+
+`paid` - boolean - syntax sugar for check is order paid
 
 ```ts
 {
