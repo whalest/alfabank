@@ -1,5 +1,5 @@
-<h1 align="center">🏦 alfabank</h1>
-<p align="center">Pay API node.js library for alfa-biz.by 🅰️  alfabank belarus</p>
+<h1 align="center">🅰️🏦 Node.JS API ALFA-BANK ✅</h1>
+<p align="center">Node.JS API library for Alfa-Bank: acquiring, remote payments (VISA, MASTERCARD, MASTERCARD, APPLE PAY, SAMSUNG PAY). Integration with CMS - node.js vue.js, react, angular</p>
 
 <img align="center" alt="alfabank" src="https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true" />
 
