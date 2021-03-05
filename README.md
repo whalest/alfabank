@@ -3,7 +3,7 @@
 
 <p align="center">(Node.JS API библиотека для Альфа-Банк: эквайринг, удаленные платежи (VISA, MASTERCARD, MASTERCARD, APPLE PAY, SAMSUNG PAY). Интеграция с CMS - node.js vue.js, react, angular)</p>
 
-<img align="center" alt="alfabank" src="https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true" />
+<img align="center" alt="Node.JS API библиотека для Альфа-Банк" title="Node.JS API library for Alfa-Bank" src="https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true" />
 
 [![d](https://img.shields.io/npm/dm/alfabank.svg?style=flat-square)](https://npmjs.com/package/alfabank)
 [![v](https://img.shields.io/npm/v/alfabank/latest.svg?style=flat-square)](https://npmjs.com/package/alfabank)
