@@ -2,6 +2,8 @@ import {
   IAuth,
   Register,
   RegisterResponse,
+  Refund,
+  RefundResponse,
   Status,
   StatusResponse,
   StatusExtended,
@@ -52,6 +54,13 @@ export const useAlfaBank = ({
     )
   }
 
+  const refund = async (data: Refund) => {
+    return await request<RefundResponse, typeof data>(
+      '/rest/refund.do',
+      data
+    )
+  }
+
   const getOrderStatus = async (data: Status) => {
     return await request<StatusResponse, typeof data>(
       '/rest/getOrderStatus.do',
@@ -89,6 +98,7 @@ export const useAlfaBank = ({
   return {
     instance,
     register,
+    refund,
     addParams,
     getOrderStatus,
     getOrderStatusExtended,
