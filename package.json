@@ -10,6 +10,7 @@
     "start": "esno -r dotenv/config ./play/index.ts",
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
     "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build",
     "test": "esno node_modules/jasmine/bin/jasmine --config=jasmine.json"
   },
   "repository": {
