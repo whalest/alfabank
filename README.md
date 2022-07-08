@@ -1,12 +1,17 @@
 <h1 align="center">🅰️🏦 Node.JS API ALFA-BANK ✅</h1>
-<p align="center">Node.JS API library for Alfa-Bank: acquiring, remote payments (VISA, MASTERCARD, MASTERCARD, APPLE PAY, SAMSUNG PAY). Integration with CMS - node.js vue.js, react, angular</p>
 
-<p align="center">(Node.JS API библиотека для Альфа-Банк: эквайринг, удаленные платежи (VISA, MASTERCARD, MASTERCARD, APPLE PAY, SAMSUNG PAY). Интеграция с CMS - node.js vue.js, react, angular)</p>
+<p align="center">Node.JS API library for Alfa-Bank: acquiring, remote payments (VISA, MASTERCARD, MASTERCARD, APPLE PAY, SAMSUNG PAY). Integration with CMS - node.js vue.js, react, angular (Unnoficial)</p>
+
+<p align="center">(Node.JS API библиотека для Альфа-Банк: эквайринг, удаленные платежи (VISA, MASTERCARD, MASTERCARD, APPLE PAY, SAMSUNG PAY). Интеграция с CMS - node.js vue.js, react, angular) (Неоффициальная)</p>
+
+<p align="center"><a href="https://alfa-biz.by/payment/internet-acquiring">official site</a></p>
 
 <img align="center" alt="Node.JS API библиотека для Альфа-Банк" title="Node.JS API library for Alfa-Bank" src="https://github.com/whalest/alfabank/blob/main/assets/main.png?raw=true" />
 
 [![d](https://img.shields.io/npm/dm/alfabank.svg?style=flat-square)](https://npmjs.com/package/alfabank)
 [![v](https://img.shields.io/npm/v/alfabank/latest.svg?style=flat-square)](https://npmjs.com/package/alfabank)
+
+## Features
 
 - [axios](https://github.com/axios/axios)
 - composition api like
@@ -17,17 +22,22 @@
   - [x] `getOrderStatusExtended.do`
   - [x] `addParams.do`
   - [x] `refund.do`
+  
+based on documentation [merchant manual - ru](https://alfa-biz.by/acquiring/docs/merchantmanual.pdf#page=92)
 
-based on [merchant manual - ru](https://alfa-biz.by/acquiring/docs/merchantmanual.pdf#page=92)
 
-# Installing
+## Installing
 
 Install alfabank package
 
 ```sh
 npm i alfabank
+
 # or
 yarn add alfabank
+
+# or
+pnpm add alfabank
 ```
 
 import
@@ -53,7 +63,7 @@ instance for action
 
 ### Options
 
-#### `token` - (string) Token
+#### `token` - (string) Token (request in bank support)
 
 #### `userName` - (string) Login for integration
 
