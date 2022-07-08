@@ -16,6 +16,7 @@
   - [x] `getOrderStatus.do`
   - [x] `getOrderStatusExtended.do`
   - [x] `addParams.do`
+  - [x] `refund.do`
 
 based on [merchant manual - ru](https://alfa-biz.by/acquiring/docs/merchantmanual.pdf#page=92)
 
@@ -109,6 +110,16 @@ if (result?.orderId) {
 } else if (result?.errorCode) {
   throw new Error(result.errorMessage)
 }
+```
+
+#### `refund` - Order payment refund
+
+```ts
+const refundData = await alfaBank.refund({
+  amount: toBynPenny(115 * 2),
+  orderId: '291c4b92-4c38-70db-b265-5a2000c91c61',
+})
+console.log(refundData)
 ```
 
 #### `getOrderStatus` - get order status
