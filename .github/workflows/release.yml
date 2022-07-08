@@ -13,10 +13,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - name: Set node
+        uses: actions/setup-node@v3
         with:
+          registry-url: https://registry.npmjs.org/
           node-version: 16.x
 
-      - run: npx changelogithub
+      - name: Install
+        run: npm install
+
+      - name: Generate changelog
+        run: npx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
