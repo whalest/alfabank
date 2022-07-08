@@ -152,3 +152,16 @@ mutate response:
 ```
 
 #### `addParams` - add params to order
+
+```ts
+await alfaBank.addParams({
+  orderId: "291c4b92-4c38-70db-b265-5a2000c91c61",
+  params: {
+    cutom_field1: "sample"
+  }
+})
+```
+
+## License
+
+[MIT](./LICENSE) License © 2022 [reslear](https://github.com/reslear)
