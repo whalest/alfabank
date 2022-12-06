@@ -1,9 +1,10 @@
 <h1 align="center">🅰️🏦 Node.JS API ALFA-BANK ✅</h1>
 
-<p align="center">Node.JS API library for Alfa-Bank in Belarus: acquiring, remote payments (VISA, MASTERCARD)<br>(Unnoficial)</p>
+<p align="center">Node.JS API library for Alfa-Bank in Belarus: acquiring, remote payments (VISA, MASTERCARD)</p>
+<p align="center">(Unnoficial)</p>
 
-
-<p align="center">Node.JS API библиотека для Альфа-Банк в Беларуси: эквайринг, удаленные платежи (VISA, MASTERCARD)<br>(Неоффициальная)</p>
+<p align="center">Node.JS API библиотека для Альфа-Банк в Беларуси: эквайринг, удаленные платежи (VISA, MASTERCARD)</p>
+<p align="center">(Не оффициально)</p>
 
 <p align="center"><a href="https://alfa-biz.by/payment/internet-acquiring">official site</a></p>
 
